@@ -176,6 +176,68 @@ a {
   align-items: center;
 }
 
+/* Video Hero variant */
+.hero-video {
+  min-height: 640px;
+  display: flex;
+  align-items: center;
+  background: var(--petrol-dark);
+}
+
+.hero-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(13, 38, 44, 0.68) 0%, rgba(13, 38, 44, 0.42) 55%, rgba(13, 38, 44, 0.68) 100%);
+  z-index: 1;
+}
+
+.hero-inner-video {
+  position: relative;
+  z-index: 2;
+  grid-template-columns: 1fr;
+  max-width: 720px;
+}
+
+.hero.hero-video h1 {
+  color: var(--white);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.hero.hero-video h1 span {
+  color: var(--aqua);
+}
+
+.hero.hero-video .hero-copy .hero-lead {
+  color: var(--white);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+.hero.hero-video .hero-copy p {
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+.hero.hero-video .btn-outline {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: var(--white);
+}
+
+.hero.hero-video .btn-outline:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: var(--white);
+  color: var(--white);
+}
+
 .hero-tag {
   display: inline-block;
   background: var(--aqua-soft);
@@ -262,28 +324,6 @@ a {
 .btn-outline:hover {
   border-color: var(--petrol);
   color: var(--petrol);
-}
-
-.hero-stats {
-  display: flex;
-  gap: 28px;
-  margin-top: 44px;
-}
-
-.hero-stats div {
-  text-align: center;
-}
-
-.hero-stats strong {
-  display: block;
-  font-size: 1.6rem;
-  color: var(--petrol);
-  font-weight: 800;
-}
-
-.hero-stats span {
-  color: var(--text-body);
-  font-size: 0.85rem;
 }
 
 .hero-visual {
@@ -1007,7 +1047,10 @@ a {
 .footer-icon {
   display: inline-flex;
   align-items: center;
-  margin-left: 8px;
+  justify-content: center;
+  width: 20px;
+  flex-shrink: 0;
+  margin-left: 10px;
 }
 
 .footer-grid a:hover {
@@ -1023,7 +1066,36 @@ a {
 }
 
 /* WhatsApp floating button */
+.placement-cta {
+  display: none;
+  position: fixed;
+  bottom: 100px;
+  right: 40px;
+  background: var(--wine);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.82rem;
+  line-height: 1.3;
+  padding: 12px 18px;
+  border-radius: var(--radius);
+  box-shadow: 0 6px 16px rgba(104, 45, 75, 0.35);
+  z-index: 90;
+  max-width: 200px;
+  text-align: center;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.placement-cta.visible {
+  display: block;
+}
+
+.placement-cta:hover {
+  background: var(--wine-dark);
+  transform: translateY(-2px);
+}
+
 .whatsapp-float {
+  display: none;
   position: fixed;
   bottom: 40px;
   right: 40px;
@@ -1032,12 +1104,15 @@ a {
   border-radius: 50%;
   background: var(--aqua);
   color: var(--white);
-  display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 6px 16px rgba(79, 167, 160, 0.4);
   z-index: 90;
   transition: background 0.2s, transform 0.2s;
+}
+
+.whatsapp-float.visible {
+  display: flex;
 }
 
 .whatsapp-float:hover {
@@ -1139,13 +1214,12 @@ a {
     padding-top: 104px;
   }
 
-  .hero h1 {
-    font-size: 2.1rem;
+  .hero-video {
+    min-height: 560px;
   }
 
-  .hero-stats {
-    flex-wrap: wrap;
-    gap: 20px;
+  .hero h1 {
+    font-size: 2.1rem;
   }
 
   .services-grid,
@@ -1169,5 +1243,18 @@ a {
 
   .section {
     padding: 60px 0;
+  }
+
+  .placement-cta {
+    bottom: 88px;
+    right: 20px;
+    max-width: 150px;
+    font-size: 0.72rem;
+    padding: 10px 14px;
+  }
+
+  .whatsapp-float {
+    bottom: 20px;
+    right: 20px;
   }
 }

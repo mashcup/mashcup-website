@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>משקפ מכונות אוטומטיות | פתרון שתייה חכם לעסק שלך</title>
+<meta name="description" content="התקנה ותחזוקה שוטפת של מכונות אוטומטיות לשתייה, חטיפים ומזון - למשרדים, מפעלים ומוסדות באזור גוש דן. שירות מקצועי וזמין.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Heebo:wght@900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav container">
+    <a href="#home" class="logo">
+      <img src="assets/logo.png" alt="משקפ אוטומטים" class="logo-img">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">בית</a></li>
+      <li><a href="#services">השירות שלנו</a></li>
+      <li><a href="#gallery">גלריה</a></li>
+      <li><a href="#testimonials">המלצות</a></li>
+      <li><a href="#contact">צור קשר</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">קבלו הצעת מחיר</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="תפריט">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="container hero-inner">
+      <div>
+        <h1>פותרים לכם את פינת השתייה והנשנושים <span>בלי מאמץ</span></h1>
+        <div class="hero-copy">
+          <p class="hero-lead">מאחורי כל מכונה שלנו יש אנשים שדואגים שהיא תעבוד כמו שצריך.</p>
+          <p>אנחנו מתקינים מכונות אוטומטיות במשרדים, מפעלים ומוסדות, ומתאימים לכל מקום את המכונה ואת מגוון המוצרים שמתאימים לו - משתייה קרה וחמה, דרך חטיפים וממתקים ועד כריכים ומוצרי מזון.</p>
+          <p>אבל מבחינתנו, העבודה לא נגמרת ביום שהמכונה מגיעה. אנחנו ממשיכים להגיע, למלא, לתחזק ולטפל במה שצריך לאורך הדרך. ואם יש שאלה, בקשה או תקלה - יש למי להתקשר ויש מי שמכיר אתכם.</p>
+          <p>אנחנו מאמינים ששירות טוב לא צריך להיות מסובך: להיות זמינים, לעמוד במילה שלנו ולדאוג שהמכונה פשוט תעבוד.</p>
+        </div>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">קבלו הצעת מחיר בחינם</a>
+          <a href="#services" class="btn btn-outline">איך זה עובד</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <strong>+150</strong>
+            <span>מכונות בשטח</span>
+          </div>
+          <div>
+            <strong>+150</strong>
+            <span>לקוחות מרוצים</span>
+          </div>
+          <div>
+            <strong>24/7</strong>
+            <span>תמיכה טכנית</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-photo-wrap" id="heroCarousel">
+          <div class="hero-slides">
+            <img src="assets/hero-machine.jpg" alt="מכונת משקפ אוטומטית - מקררי שתייה" class="hero-slide is-active">
+            <img src="assets/hero-machine-2.jpg" alt="מכונת משקפ אוטומטית - חטיפים" class="hero-slide">
+            <img src="assets/hero-machine-3.jpg" alt="מכונת משקפ אוטומטית בשטח" class="hero-slide">
+            <img src="assets/hero-machine-4.jpg" alt="מכונות משקפ מותקנות אצל לקוח" class="hero-slide">
+          </div>
+          <button class="hero-nav prev" type="button" aria-label="תמונה קודמת">‹</button>
+          <button class="hero-nav next" type="button" aria-label="תמונה הבאה">›</button>
+          <div class="hero-dots">
+            <button class="hero-dot is-active" type="button" data-index="0" aria-label="עבור לתמונה 1"></button>
+            <button class="hero-dot" type="button" data-index="1" aria-label="עבור לתמונה 2"></button>
+            <button class="hero-dot" type="button" data-index="2" aria-label="עבור לתמונה 3"></button>
+            <button class="hero-dot" type="button" data-index="3" aria-label="עבור לתמונה 4"></button>
+          </div>
+        </div>
+        <div class="hero-tags">
+          <span class="hero-chip">✓ מילוי שוטף</span>
+          <span class="hero-chip">✓ תחזוקה ושירות</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">השירות שלנו</span>
+        <h2>כל מה שהעסק שלכם צריך לפינת השתייה והנשנושים</h2>
+        <p>אנחנו מלווים אתכם מהבחירה ועד התפעול השוטף - פתרון מלא בלי כאבי ראש.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">☕️</div>
+          <h3>מכונות קפה אוטומטיות</h3>
+          <p>מגוון מכונות קפה טחינה טרייה, קפוצ׳ינו, אספרסו ומשקאות חמים לכל גודל צוות.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🥪</div>
+          <h3>שתייה קרה, חטיפים ומזון</h3>
+          <p>מכונות ממתקים, חטיפים, כריכים ומוצרי מזון עם תשלום באשראי, ביט או קוד עובד.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🔧</div>
+          <h3>התקנה ותחזוקה</h3>
+          <p>התקנה מקצועית, מילוי סדיר וטכנאי שירות זמין לכל תקלה.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🧽</div>
+          <h3>מילוי וניקיון שוטף</h3>
+          <p>ביקורי מילוי, ניקיון וסבב תחזוקה קבועים כדי שהמכונה תמיד תהיה זמינה ונקייה.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📊</div>
+          <h3>ניטור חכם מרחוק</h3>
+          <p>המכונות שלנו מדווחות מלאי ותקלות בזמן אמת - אנחנו כבר בדרך לפני שהתלוננתם.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🤝</div>
+          <h3>ליווי אישי</h3>
+          <p>איש קשר קבוע שמכיר את העסק שלכם ומתאים את המכונה בדיוק לצרכים שלכם.</p>
+        </div>
+      </div>
+
+      <div class="steps" id="stepsSection">
+        <div class="steps-line" id="stepsLine"></div>
+        <div class="step">
+          <div class="step-num">1</div>
+          <h4>יצירת קשר</h4>
+          <p>משאירים פרטים ואנחנו חוזרים אליכם</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h4>התאמת פתרון</h4>
+          <p>בוחרים את המכונה והמסלול המתאימים לכם</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h4>התקנה מקצועית</h4>
+          <p>הצוות שלנו מגיע ומתקין את המכונה אצלכם</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h4>שירות שוטף</h4>
+          <p>מילוי, תחזוקה ותמיכה - אנחנו דואגים לכל השאר</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section section-alt" id="gallery">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">גלריה</span>
+        <h2>עבודות שביצענו</h2>
+        <p>מבחר התקנות אצל לקוחות שלנו - משרדים, מפעלים ומוסדות ברחבי הארץ.</p>
+      </div>
+      <div class="gallery-grid" id="galleryGrid">
+        <button class="gallery-item" type="button" data-index="0"><img src="assets/hero-machine.jpg" alt="מכונת שתייה קרה של משקפ"></button>
+        <button class="gallery-item" type="button" data-index="1"><img src="assets/hero-machine-2.jpg" alt="מכונת חטיפים של משקפ"></button>
+        <button class="gallery-item" type="button" data-index="2"><img src="assets/hero-machine-3.jpg" alt="מכונת משקפ בשטח, מבט מלא"></button>
+        <button class="gallery-item" type="button" data-index="3"><img src="assets/hero-machine-4.jpg" alt="מכונות משקפ מותקנות אצל לקוח"></button>
+        <button class="gallery-item" type="button" data-index="4"><img src="assets/gallery-5.jpg" alt="מכונת חטיפים ומאפים של משקפ"></button>
+        <button class="gallery-item" type="button" data-index="5"><img src="assets/gallery-6.jpg" alt="מכונת שתייה של משקפ, מבט מלא"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">המלצות</span>
+        <h2>מה הלקוחות שלנו אומרים</h2>
+        <p>מאות עסקים כבר בחרו בנו לפתרון פינת השתייה והנשנושים שלהם.</p>
+      </div>
+      <div class="testimonials-carousel">
+        <button class="testi-nav prev" type="button" aria-label="המלצות קודמות">‹</button>
+        <div class="testimonials-viewport">
+          <div class="testimonials-track" id="testimonialsTrack">
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p class="quote">"שירות מהיר ואמין, המכונה מעולם לא הייתה מקולקלת יותר מיום. ממליצים בחום לכל משרד."</p>
+              <div class="testimonial-person">
+                <div class="avatar">מ</div>
+                <div>
+                  <strong>מירב כהן</strong>
+                  <span>מנהלת משרד, היי-טק תל אביב</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p class="quote">"התקינו לנו שתי מכונות במפעל ומאז העובדים מרוצים מאוד. התחזוקה תמיד בזמן."</p>
+              <div class="testimonial-person">
+                <div class="avatar">ד</div>
+                <div>
+                  <strong>דוד לוי</strong>
+                  <span>מנהל תפעול, מפעל ייצור</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p class="quote">"תהליך ההתקנה היה מהיר ופשוט, והצוות זמין תמיד לכל שאלה. שווה כל שקל."</p>
+              <div class="testimonial-person">
+                <div class="avatar">ר</div>
+                <div>
+                  <strong>רונית אברהם</strong>
+                  <span>בעלת עסק, מרכז מסחרי</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p class="quote">"מילוי סדיר, בלי תקלות, ובלי שאנחנו צריכים לזכור להזמין. פשוט עובד."</p>
+              <div class="testimonial-person">
+                <div class="avatar">א</div>
+                <div>
+                  <strong>אבי שרון</strong>
+                  <span>מנהל תחזוקה, רשת מוסכים</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p class="quote">"התאימו לנו בדיוק את תמהיל המוצרים למקום, וכשמשהו נגמר הם כבר בדרך."</p>
+              <div class="testimonial-person">
+                <div class="avatar">ש</div>
+                <div>
+                  <strong>שירה גל</strong>
+                  <span>רכזת מתנ״ס</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p class="quote">"עובדים איתם כבר שנתיים, זמינים בטלפון ותמיד פותרים תקלה באותו יום."</p>
+              <div class="testimonial-person">
+                <div class="avatar">ר</div>
+                <div>
+                  <strong>רותם דגן</strong>
+                  <span>מנהל רכש, רשת מזון</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="testi-nav next" type="button" aria-label="המלצות הבאות">›</button>
+      </div>
+      <div class="testimonials-dots" id="testimonialsDots"></div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <div class="cta-banner">
+    <h2>מוכנים לשדרג את פינת השתייה והנשנושים אצלכם?</h2>
+    <p>השאירו פרטים ונשמח להתאים לכם את הפתרון הנכון.</p>
+    <a href="#contact" class="btn btn-primary">קבלו הצעת מחיר עכשיו</a>
+  </div>
+
+  <!-- Contact -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">צור קשר</span>
+        <h2>בואו נדבר על העסק שלכם</h2>
+        <p>מלאו את הפרטים ואנחנו נחזור אליכם בהקדם עם הצעה מותאמת אישית.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>פרטי התקשרות</h3>
+          <p>זמינים בטלפון, מייל או וואטסאפ - נשמח לענות על כל שאלה.</p>
+          <div class="contact-item phone">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/>
+              </svg>
+            </div>
+            <div>
+              <strong>052-2497697</strong>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="icon">✉️</div>
+            <div>
+              <strong>mashcup@gmail.com</strong>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="icon">📍</div>
+            <div>
+              <strong>שירות באזור גוש דן</strong>
+              <span>שעות פעילות: א׳-ה׳ | 08:00-17:00</span>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">שם מלא</label>
+              <input type="text" id="name" name="name" placeholder="השם שלך">
+            </div>
+            <div class="form-group">
+              <label for="phone">טלפון</label>
+              <input type="tel" id="phone" name="phone" placeholder="0540000000" inputmode="tel">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">אימייל</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com">
+          </div>
+          <div class="form-group">
+            <label for="type">סוג המכונה המבוקשת</label>
+            <select id="type" name="type">
+              <option>מכונת שתייה חמה</option>
+              <option>מכונת שתייה קרה</option>
+              <option>מכונת חטיפים</option>
+              <option>אחר / שילוב</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">הודעה</label>
+            <textarea id="message" name="message" placeholder="ספרו לנו קצת על העסק והצרכים שלכם"></textarea>
+          </div>
+          <div class="form-validation-error" id="formValidationError"></div>
+          <button type="submit" class="btn btn-primary" id="formSubmit" style="width:100%; justify-content:center;">שליחת פנייה</button>
+          <div class="form-success" id="formSuccess">תודה! הפנייה התקבלה ונחזור אליכם בהקדם.</div>
+          <div class="form-error-general" id="formErrorGeneral">משהו השתבש בשליחה. נסו שוב או צרו קשר טלפוני.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <img src="assets/logo.png" alt="משקפ אוטומטים" class="logo-img">
+        </div>
+        <p>מכונות אוטומטיות לשתייה, חטיפים ומזון למשרדים, מפעלים ומוסדות באזור גוש דן - התקנה ותחזוקה שוטפת בשירות מלא.</p>
+      </div>
+      <div>
+        <h4>ניווט</h4>
+        <ul>
+          <li><a href="#home">בית</a></li>
+          <li><a href="#services">השירות שלנו</a></li>
+          <li><a href="#gallery">גלריה</a></li>
+          <li><a href="#testimonials">המלצות</a></li>
+          <li><a href="#contact">צור קשר</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>יצירת קשר</h4>
+        <ul>
+          <li><span class="footer-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span>052-2497697</li>
+          <li><span class="footer-icon">✉️</span>mashcup@gmail.com</li>
+          <li><span class="footer-icon">📍</span>שירות באזור גוש דן</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; <span id="year"></span> משקפ מכונות אוטומטיות. כל הזכויות שמורות.
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/972522497697?text=%D7%94%D7%99%D7%99%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%21%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A0%D7%95%D7%A1%D7%A4%D7%99%D7%9D%20%3A%29" target="_blank" rel="noopener" class="whatsapp-float" aria-label="שלחו הודעה בוואטסאפ">
+  <svg viewBox="0 0 32 32" width="22" height="22" fill="currentColor" aria-hidden="true">
+    <path d="M16.02 3C9.4 3 4 8.37 4 15c0 2.4.7 4.63 1.9 6.5L4 29l7.7-1.86A11.9 11.9 0 0 0 16.02 27C22.63 27 28 21.63 28 15S22.63 3 16.02 3Zm0 21.7c-2.03 0-3.92-.58-5.52-1.58l-.4-.24-4.57 1.1 1.13-4.47-.26-.43A9.6 9.6 0 0 1 6.3 15c0-5.36 4.36-9.72 9.72-9.72 5.36 0 9.72 4.36 9.72 9.72s-4.36 9.7-9.72 9.7Zm5.35-7.28c-.29-.15-1.73-.86-2-.95-.27-.1-.46-.15-.66.14-.2.29-.76.95-.93 1.15-.17.19-.34.22-.63.07-.29-.15-1.22-.45-2.32-1.43-.86-.76-1.44-1.71-1.6-2-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.66-1.58-.9-2.17-.24-.57-.48-.5-.66-.5-.17 0-.36-.02-.56-.02-.19 0-.5.07-.77.36-.26.29-1 .98-1 2.4s1.03 2.78 1.17 2.97c.15.19 2.03 3.1 4.92 4.35.69.3 1.22.47 1.64.61.69.22 1.31.19 1.8.11.55-.08 1.73-.71 1.97-1.39.24-.68.24-1.27.17-1.39-.07-.12-.26-.19-.55-.34Z"/>
+  </svg>
+</a>
+<button class="scroll-top" id="scrollTop" aria-label="חזרה למעלה">↑</button>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" type="button" aria-label="סגירה">✕</button>
+  <button class="lightbox-nav prev" id="lightboxPrev" type="button" aria-label="תמונה קודמת">‹</button>
+  <img src="" alt="" id="lightboxImg" class="lightbox-img">
+  <button class="lightbox-nav next" id="lightboxNext" type="button" aria-label="תמונה הבאה">›</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

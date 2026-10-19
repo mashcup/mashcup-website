@@ -10,12 +10,16 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a class="skip-link" href="#main">דלג לתוכן הראשי</a>
 
 <header class="site-header">
   <nav class="nav container">
     <a href="#home" class="logo">
       <img src="assets/logo.png" alt="משקפ אוטומטים" class="logo-img">
     </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="תפריט" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home">בית</a></li>
       <li><a href="#services">השירות שלנו</a></li>
@@ -24,19 +28,20 @@
       <li><a href="#contact">צור קשר</a></li>
     </ul>
     <a href="#contact" class="nav-cta">קבלו הצעת מחיר</a>
-    <button class="menu-toggle" id="menuToggle" aria-label="תפריט">
-      <span></span><span></span><span></span>
-    </button>
   </nav>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
   <!-- Hero -->
   <section class="hero hero-video" id="home">
-    <video class="hero-bg-video" autoplay muted loop playsinline poster="assets/hero-machine.jpg">
+    <video class="hero-bg-video" id="heroVideo" aria-hidden="true" autoplay muted loop playsinline poster="assets/hero-machine.jpg">
       <source src="assets/hero-video.mp4" type="video/mp4">
     </video>
     <div class="hero-video-overlay"></div>
+    <button class="hero-video-toggle" id="heroVideoToggle" type="button" aria-label="עצירת סרטון הרקע">
+      <svg class="icon-pause" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+      <svg class="icon-play" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
+    </button>
     <div class="container hero-inner hero-inner-video">
       <div>
         <h1>פותרים לכם את פינת השתייה והנשנושים <span>בלי מאמץ</span></h1>
@@ -64,37 +69,38 @@
       </div>
       <div class="services-grid">
         <div class="service-card">
-          <div class="service-icon">🥪</div>
+          <div class="service-icon" aria-hidden="true">🥪</div>
           <h3>שתייה קרה, חטיפים ומזון</h3>
           <p>מכונות לשתייה קרה, חטיפים, כריכים ומזון ממגוון חברות ומותגים.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">☕️</div>
+          <div class="service-icon" aria-hidden="true">☕️</div>
           <h3>מכונות שתייה חמה</h3>
           <p>מגוון מכונות לקפה, קפוצ'ינו, אספרסו ומשקאות חמים נוספים, איכותיות ונוחות לשימוש.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">🔧</div>
+          <div class="service-icon" aria-hidden="true">🔧</div>
           <h3>התקנה ותחזוקה</h3>
           <p>התקנה מקצועית, מילוי סדיר וטכנאי שירות זמין לכל תקלה. אפשרות לתשלום במזומן, באשראי או באמצעות קוד עובד.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">🧽</div>
+          <div class="service-icon" aria-hidden="true">🧽</div>
           <h3>מילוי וניקיון שוטף</h3>
           <p>ביקורי מילוי, ניקיון וסבב תחזוקה קבועים כדי שהמכונה תמיד תהיה זמינה ונקייה.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">📊</div>
+          <div class="service-icon" aria-hidden="true">📊</div>
           <h3>ניטור חכם מרחוק</h3>
           <p>המכונות שלנו מדווחות מלאי ותקלות בזמן אמת - אנחנו כבר בדרך לפני שהתלוננתם.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">🤝</div>
+          <div class="service-icon" aria-hidden="true">🤝</div>
           <h3>ליווי אישי</h3>
           <p>איש קשר קבוע שמכיר את העסק שלכם ומתאים את המכונה בדיוק לצרכים שלכם.</p>
         </div>
       </div>
 
+      <h3 class="sr-only">איך זה עובד</h3>
       <div class="steps" id="stepsSection">
         <div class="steps-line" id="stepsLine"></div>
         <div class="step">
@@ -130,12 +136,15 @@
         <p>מבחר התקנות אצל לקוחות שלנו - משרדים, מפעלים ומוסדות ברחבי הארץ.</p>
       </div>
       <div class="gallery-grid" id="galleryGrid">
-        <button class="gallery-item" type="button" data-index="0"><img src="assets/hero-machine.jpg" alt="מכונת שתייה קרה של משקפ"></button>
-        <button class="gallery-item" type="button" data-index="1"><img src="assets/hero-machine-2.jpg" alt="מכונת חטיפים של משקפ"></button>
-        <button class="gallery-item" type="button" data-index="2"><img src="assets/hero-machine-3.jpg" alt="מכונת משקפ בשטח, מבט מלא"></button>
-        <button class="gallery-item" type="button" data-index="3"><img src="assets/hero-machine-4.jpg" alt="מכונות משקפ מותקנות אצל לקוח"></button>
-        <button class="gallery-item" type="button" data-index="4"><img src="assets/gallery-5.jpg" alt="מכונת חטיפים ומאפים של משקפ"></button>
-        <button class="gallery-item" type="button" data-index="5"><img src="assets/gallery-6.jpg" alt="מכונת שתייה של משקפ, מבט מלא"></button>
+        <button class="gallery-item" type="button" data-index="0"><img src="assets/hero-machine.jpg" alt="מבט מקרוב על מדפי מכונת שתייה קרה מלאה בפחיות ובקבוקים"></button>
+        <button class="gallery-item" type="button" data-index="1"><img src="assets/hero-machine-2.jpg" alt="מדפי מכונת חטיפים מלאה בשקיות חטיפים מלוחים ומתוקים"></button>
+        <button class="gallery-item" type="button" data-index="2"><img src="assets/hero-machine-3.jpg" alt="מכונת שתייה קרה מוארת עם חזית זכוכית, מלאה בפחיות ובבקבוקים"></button>
+        <button class="gallery-item" type="button" data-index="3"><img src="assets/hero-machine-4.jpg" alt="מכונת שתייה ומכונת חטיפים מוצבות זו לצד זו בחצר של לקוח"></button>
+        <button class="gallery-item" type="button" data-index="4"><img src="assets/gallery-5.jpg" alt="מדפי מכונת חטיפים עם מאפים, חטיפים מלוחים וממתקים"></button>
+        <button class="gallery-item" type="button" data-index="5"><img src="assets/gallery-6.jpg" alt="מכונת שתייה קרה בעיצוב קוקה-קולה מותקנת בלובי של בניין"></button>
+      </div>
+      <div class="gallery-controls">
+        <button class="gallery-toggle" id="galleryToggle" type="button">עצירת החלפת התמונות</button>
       </div>
     </div>
   </section>
@@ -153,10 +162,10 @@
         <div class="testimonials-viewport">
           <div class="testimonials-track" id="testimonialsTrack">
             <div class="testimonial-card">
-              <div class="stars">★★★★★</div>
+              <div class="stars" role="img" aria-label="דירוג 5 מתוך 5">★★★★★</div>
               <p class="quote">"שירות מהיר ואמין, המכונה מעולם לא הייתה מקולקלת יותר מיום. ממליצים בחום לכל משרד."</p>
               <div class="testimonial-person">
-                <div class="avatar">מ</div>
+                <div class="avatar" aria-hidden="true">מ</div>
                 <div>
                   <strong>מירב כהן</strong>
                   <span>מנהלת משרד, היי-טק תל אביב</span>
@@ -164,10 +173,10 @@
               </div>
             </div>
             <div class="testimonial-card">
-              <div class="stars">★★★★★</div>
+              <div class="stars" role="img" aria-label="דירוג 5 מתוך 5">★★★★★</div>
               <p class="quote">"התקינו לנו שתי מכונות במפעל ומאז העובדים מרוצים מאוד. התחזוקה תמיד בזמן."</p>
               <div class="testimonial-person">
-                <div class="avatar">ד</div>
+                <div class="avatar" aria-hidden="true">ד</div>
                 <div>
                   <strong>דוד לוי</strong>
                   <span>מנהל תפעול, מפעל ייצור</span>
@@ -175,10 +184,10 @@
               </div>
             </div>
             <div class="testimonial-card">
-              <div class="stars">★★★★★</div>
+              <div class="stars" role="img" aria-label="דירוג 5 מתוך 5">★★★★★</div>
               <p class="quote">"תהליך ההתקנה היה מהיר ופשוט, והצוות זמין תמיד לכל שאלה. שווה כל שקל."</p>
               <div class="testimonial-person">
-                <div class="avatar">ר</div>
+                <div class="avatar" aria-hidden="true">ר</div>
                 <div>
                   <strong>רונית אברהם</strong>
                   <span>בעלת עסק, מרכז מסחרי</span>
@@ -186,10 +195,10 @@
               </div>
             </div>
             <div class="testimonial-card">
-              <div class="stars">★★★★★</div>
+              <div class="stars" role="img" aria-label="דירוג 5 מתוך 5">★★★★★</div>
               <p class="quote">"מילוי סדיר, בלי תקלות, ובלי שאנחנו צריכים לזכור להזמין. פשוט עובד."</p>
               <div class="testimonial-person">
-                <div class="avatar">א</div>
+                <div class="avatar" aria-hidden="true">א</div>
                 <div>
                   <strong>אבי שרון</strong>
                   <span>מנהל תחזוקה, רשת מוסכים</span>
@@ -197,10 +206,10 @@
               </div>
             </div>
             <div class="testimonial-card">
-              <div class="stars">★★★★★</div>
+              <div class="stars" role="img" aria-label="דירוג 5 מתוך 5">★★★★★</div>
               <p class="quote">"התאימו לנו בדיוק את תמהיל המוצרים למקום, וכשמשהו נגמר הם כבר בדרך."</p>
               <div class="testimonial-person">
-                <div class="avatar">ש</div>
+                <div class="avatar" aria-hidden="true">ש</div>
                 <div>
                   <strong>שירה גל</strong>
                   <span>רכזת מתנ״ס</span>
@@ -208,10 +217,10 @@
               </div>
             </div>
             <div class="testimonial-card">
-              <div class="stars">★★★★★</div>
+              <div class="stars" role="img" aria-label="דירוג 5 מתוך 5">★★★★★</div>
               <p class="quote">"עובדים איתם כבר שנתיים, זמינים בטלפון ותמיד פותרים תקלה באותו יום."</p>
               <div class="testimonial-person">
-                <div class="avatar">ר</div>
+                <div class="avatar" aria-hidden="true">ר</div>
                 <div>
                   <strong>רותם דגן</strong>
                   <span>מנהל רכש, רשת מזון</span>
@@ -246,7 +255,7 @@
           <h3>פרטי התקשרות</h3>
           <p>זמינים בטלפון, מייל או וואטסאפ - נשמח לענות על כל שאלה.</p>
           <div class="contact-item phone">
-            <div class="icon">
+            <div class="icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/>
               </svg>
@@ -256,13 +265,13 @@
             </div>
           </div>
           <div class="contact-item">
-            <div class="icon">✉️</div>
+            <div class="icon" aria-hidden="true">✉️</div>
             <div>
-              <strong>mashcup@gmail.com</strong>
+              <strong><a href="mailto:mashcup@gmail.com">mashcup@gmail.com</a></strong>
             </div>
           </div>
           <div class="contact-item">
-            <div class="icon">📍</div>
+            <div class="icon" aria-hidden="true">📍</div>
             <div>
               <strong>שירות באזור גוש דן</strong>
             </div>
@@ -270,19 +279,20 @@
         </div>
 
         <form class="contact-form" id="contactForm">
+          <p class="form-required-note">שדות חובה מסומנים בכוכבית (*)</p>
           <div class="form-row">
             <div class="form-group">
-              <label for="name">שם מלא</label>
-              <input type="text" id="name" name="name" placeholder="השם שלך">
+              <label for="name">שם מלא <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="name" name="name" placeholder="השם שלך" autocomplete="name" aria-required="true" aria-describedby="formValidationError">
             </div>
             <div class="form-group">
-              <label for="phone">טלפון</label>
-              <input type="tel" id="phone" name="phone" placeholder="0540000000" inputmode="tel">
+              <label for="phone">טלפון <span class="req" aria-hidden="true">*</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="0540000000" inputmode="tel" autocomplete="tel" aria-required="true" aria-describedby="formValidationError">
             </div>
           </div>
           <div class="form-group">
             <label for="email">אימייל</label>
-            <input type="email" id="email" name="email" placeholder="you@example.com">
+            <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email">
           </div>
           <div class="form-group">
             <label for="type">סוג המכונה המבוקשת</label>
@@ -297,10 +307,10 @@
             <label for="message">הודעה</label>
             <textarea id="message" name="message" placeholder="ספרו לנו קצת על העסק והצרכים שלכם"></textarea>
           </div>
-          <div class="form-validation-error" id="formValidationError"></div>
+          <div class="form-validation-error" id="formValidationError" role="alert"></div>
           <button type="submit" class="btn btn-primary" id="formSubmit" style="width:100%; justify-content:center;">שליחת פנייה</button>
-          <div class="form-success" id="formSuccess">תודה! הפנייה התקבלה ונחזור אליכם בהקדם.</div>
-          <div class="form-error-general" id="formErrorGeneral">משהו השתבש בשליחה. נסו שוב או צרו קשר טלפוני.</div>
+          <div class="form-success" id="formSuccess" role="status">תודה! הפנייה התקבלה ונחזור אליכם בהקדם.</div>
+          <div class="form-error-general" id="formErrorGeneral" role="alert">משהו השתבש בשליחה. נסו שוב או צרו קשר טלפוני.</div>
         </form>
       </div>
     </div>
@@ -317,7 +327,7 @@
         <p>מכונות אוטומטיות לשתייה, חטיפים ומזון למשרדים, מפעלים ומוסדות באזור גוש דן - התקנה ותחזוקה שוטפת בשירות מלא.</p>
       </div>
       <div>
-        <h4>ניווט</h4>
+        <h2>ניווט</h2>
         <ul>
           <li><a href="#home">בית</a></li>
           <li><a href="#services">השירות שלנו</a></li>
@@ -327,29 +337,30 @@
         </ul>
       </div>
       <div>
-        <h4>יצירת קשר</h4>
+        <h2>יצירת קשר</h2>
         <ul>
-          <li><span class="footer-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span><a href="tel:+972522497697">052-2497697</a></li>
-          <li><span class="footer-icon">✉️</span>mashcup@gmail.com</li>
-          <li><span class="footer-icon">📍</span>שירות באזור גוש דן</li>
+          <li><span class="footer-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span><a href="tel:+972522497697">052-2497697</a></li>
+          <li><span class="footer-icon" aria-hidden="true">✉️</span><a href="mailto:mashcup@gmail.com">mashcup@gmail.com</a></li>
+          <li><span class="footer-icon" aria-hidden="true">📍</span>שירות באזור גוש דן</li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       &copy; <span id="year"></span> משקפ מכונות אוטומטיות. כל הזכויות שמורות.
+      · <a href="accessibility.html">הצהרת נגישות</a>
     </div>
   </div>
 </footer>
 
 <a href="#contact" class="placement-cta">הצבה והפעלת מכונה ללא עלות</a>
-<a href="https://wa.me/972522497697?text=%D7%94%D7%99%D7%99%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%21%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A0%D7%95%D7%A1%D7%A4%D7%99%D7%9D%20%3A%29" target="_blank" rel="noopener" class="whatsapp-float" aria-label="שלחו הודעה בוואטסאפ">
+<a href="https://wa.me/972522497697?text=%D7%94%D7%99%D7%99%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%21%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A0%D7%95%D7%A1%D7%A4%D7%99%D7%9D%20%3A%29" target="_blank" rel="noopener" class="whatsapp-float" aria-label="שלחו הודעה בוואטסאפ (נפתח בחלון חדש)">
   <svg viewBox="0 0 32 32" width="22" height="22" fill="currentColor" aria-hidden="true">
     <path d="M16.02 3C9.4 3 4 8.37 4 15c0 2.4.7 4.63 1.9 6.5L4 29l7.7-1.86A11.9 11.9 0 0 0 16.02 27C22.63 27 28 21.63 28 15S22.63 3 16.02 3Zm0 21.7c-2.03 0-3.92-.58-5.52-1.58l-.4-.24-4.57 1.1 1.13-4.47-.26-.43A9.6 9.6 0 0 1 6.3 15c0-5.36 4.36-9.72 9.72-9.72 5.36 0 9.72 4.36 9.72 9.72s-4.36 9.7-9.72 9.7Zm5.35-7.28c-.29-.15-1.73-.86-2-.95-.27-.1-.46-.15-.66.14-.2.29-.76.95-.93 1.15-.17.19-.34.22-.63.07-.29-.15-1.22-.45-2.32-1.43-.86-.76-1.44-1.71-1.6-2-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.66-1.58-.9-2.17-.24-.57-.48-.5-.66-.5-.17 0-.36-.02-.56-.02-.19 0-.5.07-.77.36-.26.29-1 .98-1 2.4s1.03 2.78 1.17 2.97c.15.19 2.03 3.1 4.92 4.35.69.3 1.22.47 1.64.61.69.22 1.31.19 1.8.11.55-.08 1.73-.71 1.97-1.39.24-.68.24-1.27.17-1.39-.07-.12-.26-.19-.55-.34Z"/>
   </svg>
 </a>
 <button class="scroll-top" id="scrollTop" aria-label="חזרה למעלה">↑</button>
 
-<div class="lightbox" id="lightbox">
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="תצוגת תמונה מוגדלת">
   <button class="lightbox-close" id="lightboxClose" type="button" aria-label="סגירה">✕</button>
   <button class="lightbox-nav prev" id="lightboxPrev" type="button" aria-label="תמונה קודמת">‹</button>
   <img src="" alt="" id="lightboxImg" class="lightbox-img">

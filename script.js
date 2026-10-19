@@ -1,16 +1,71 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
 // Mobile menu toggle
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
 
+function setMenuOpen(open) {
+  navLinks.classList.toggle('open', open);
+  menuToggle.setAttribute('aria-expanded', String(open));
+}
+
 menuToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
+  setMenuOpen(!navLinks.classList.contains('open'));
 });
 
 navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => navLinks.classList.remove('open'));
+  link.addEventListener('click', () => setMenuOpen(false));
 });
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+    setMenuOpen(false);
+    menuToggle.focus();
+  }
+});
+
+// Hero background video: don't autoplay when the user prefers reduced motion
+const heroVideo = document.getElementById('heroVideo');
+
+if (heroVideo) {
+  function syncHeroVideoMotion() {
+    if (reducedMotion.matches) {
+      heroVideo.pause();
+    } else if (heroVideo.paused) {
+      heroVideo.play().catch(() => {});
+    }
+  }
+
+  const heroVideoToggle = document.getElementById('heroVideoToggle');
+  let heroVideoStoppedByUser = false;
+
+  function updateHeroVideoToggle() {
+    const playing = !heroVideo.paused;
+    heroVideoToggle.classList.toggle('is-paused', !playing);
+    heroVideoToggle.setAttribute('aria-label', playing ? 'עצירת סרטון הרקע' : 'הפעלת סרטון הרקע');
+  }
+
+  heroVideoToggle.addEventListener('click', () => {
+    if (heroVideo.paused) {
+      heroVideoStoppedByUser = false;
+      heroVideo.play().catch(() => {});
+    } else {
+      heroVideoStoppedByUser = true;
+      heroVideo.pause();
+    }
+  });
+
+  heroVideo.addEventListener('play', updateHeroVideoToggle);
+  heroVideo.addEventListener('pause', updateHeroVideoToggle);
+
+  syncHeroVideoMotion();
+  updateHeroVideoToggle();
+  reducedMotion.addEventListener('change', () => {
+    if (!heroVideoStoppedByUser) syncHeroVideoMotion();
+  });
+}
 
 // Scroll spy: highlight the nav link matching the section currently in view
 const navLinkMap = new Map();
@@ -64,7 +119,7 @@ window.addEventListener('scroll', () => {
 });
 
 scrollTopBtn.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top: 0, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
 });
 
 // Hero image carousel
@@ -230,6 +285,11 @@ if (testiTrack) {
     const logical = ((extIndex - CLONE) % realCount + realCount) % realCount;
     testiDotsWrap.querySelectorAll('.testi-dot').forEach((dot, i) => {
       dot.classList.toggle('is-active', i === logical);
+      if (i === logical) {
+        dot.setAttribute('aria-current', 'true');
+      } else {
+        dot.removeAttribute('aria-current');
+      }
     });
   }
 
@@ -243,7 +303,7 @@ if (testiTrack) {
 
   function moveTo(index, animate) {
     extIndex = index;
-    testiTrack.style.transition = animate ? `transform ${TESTI_TRANSITION_MS}ms ease` : 'none';
+    testiTrack.style.transition = animate && !reducedMotion.matches ? `transform ${TESTI_TRANSITION_MS}ms ease` : 'none';
 
     const targetCard = extendedCards[extIndex];
     const viewportRect = testiViewport.getBoundingClientRect();
@@ -304,15 +364,15 @@ const galleryGrid = document.getElementById('galleryGrid');
 
 if (galleryGrid) {
   const GALLERY_POOL = [
-    { src: 'assets/hero-machine.jpg', alt: 'מכונת שתייה קרה של משקפ' },
-    { src: 'assets/hero-machine-2.jpg', alt: 'מכונת חטיפים של משקפ' },
-    { src: 'assets/hero-machine-3.jpg', alt: 'מכונת משקפ בשטח, מבט מלא' },
-    { src: 'assets/hero-machine-4.jpg', alt: 'מכונות משקפ מותקנות אצל לקוח' },
-    { src: 'assets/gallery-5.jpg', alt: 'מכונת חטיפים ומאפים של משקפ' },
-    { src: 'assets/gallery-6.jpg', alt: 'מכונת שתייה של משקפ, מבט מלא' },
-    { src: 'assets/gallery-7.jpg', alt: 'מכונת משקפ, מבט מלא' },
-    { src: 'assets/gallery-8.jpg', alt: 'מכונת חטיפים של משקפ' },
-    { src: 'assets/gallery-9.jpg', alt: 'מכונת משקפ, מבט מלא' }
+    { src: 'assets/hero-machine.jpg', alt: 'מבט מקרוב על מדפי מכונת שתייה קרה מלאה בפחיות ובקבוקים' },
+    { src: 'assets/hero-machine-2.jpg', alt: 'מדפי מכונת חטיפים מלאה בשקיות חטיפים מלוחים ומתוקים' },
+    { src: 'assets/hero-machine-3.jpg', alt: 'מכונת שתייה קרה מוארת עם חזית זכוכית, מלאה בפחיות ובבקבוקים' },
+    { src: 'assets/hero-machine-4.jpg', alt: 'מכונת שתייה ומכונת חטיפים מוצבות זו לצד זו בחצר של לקוח' },
+    { src: 'assets/gallery-5.jpg', alt: 'מדפי מכונת חטיפים עם מאפים, חטיפים מלוחים וממתקים' },
+    { src: 'assets/gallery-6.jpg', alt: 'מכונת שתייה קרה בעיצוב קוקה-קולה מותקנת בלובי של בניין' },
+    { src: 'assets/gallery-7.jpg', alt: 'מכונת שתייה עם חזית זכוכית ומדפים ריקים, לפני מילוי ראשון' },
+    { src: 'assets/gallery-8.jpg', alt: 'מבט מקרוב על מכונת חטיפים מלאה במגוון חטיפים וממתקים' },
+    { src: 'assets/gallery-9.jpg', alt: 'מכונת שתייה קרה מלאה בפחיות, מותקנת במסדרון' }
   ];
 
   const galleryTiles = [...galleryGrid.querySelectorAll('.gallery-item')];
@@ -331,24 +391,32 @@ if (galleryGrid) {
   const lightboxPrev = document.getElementById('lightboxPrev');
   const lightboxNext = document.getElementById('lightboxNext');
   let lbIndex = 0;
+  let lbImages = [];
+  let lbOpener = null;
+
+  function renderLightbox() {
+    lightboxImg.src = lbImages[lbIndex].src;
+    lightboxImg.alt = lbImages[lbIndex].alt;
+  }
 
   function openLightbox(index) {
     lbIndex = index;
-    const images = getLiveImages();
-    lightboxImg.src = images[lbIndex].src;
-    lightboxImg.alt = images[lbIndex].alt;
+    // Snapshot the tiles so the rotation can't swap images under the open lightbox
+    lbImages = getLiveImages();
+    lbOpener = document.activeElement;
+    renderLightbox();
     lightbox.classList.add('is-open');
+    lightboxClose.focus();
   }
 
   function closeLightbox() {
     lightbox.classList.remove('is-open');
+    if (lbOpener) lbOpener.focus();
   }
 
   function showLightbox(delta) {
-    const images = getLiveImages();
-    lbIndex = (lbIndex + delta + images.length) % images.length;
-    lightboxImg.src = images[lbIndex].src;
-    lightboxImg.alt = images[lbIndex].alt;
+    lbIndex = (lbIndex + delta + lbImages.length) % lbImages.length;
+    renderLightbox();
   }
 
   galleryTiles.forEach((item, i) => {
@@ -366,13 +434,51 @@ if (galleryGrid) {
   document.addEventListener('keydown', (e) => {
     if (!lightbox.classList.contains('is-open')) return;
     if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight') showLightbox(1);
-    if (e.key === 'ArrowLeft') showLightbox(-1);
+    // RTL: the "next" button sits on the left, "previous" on the right
+    if (e.key === 'ArrowLeft') showLightbox(1);
+    if (e.key === 'ArrowRight') showLightbox(-1);
+
+    // Keep keyboard focus inside the open lightbox
+    if (e.key === 'Tab') {
+      const focusables = [lightboxClose, lightboxPrev, lightboxNext];
+      const currentIdx = focusables.indexOf(document.activeElement);
+      const nextIdx = e.shiftKey
+        ? (currentIdx <= 0 ? focusables.length - 1 : currentIdx - 1)
+        : (currentIdx === -1 || currentIdx === focusables.length - 1 ? 0 : currentIdx + 1);
+      e.preventDefault();
+      focusables[nextIdx].focus();
+    }
   });
+
+  // Pause the rotation while the user is looking at or interacting with the gallery
+  const galleryToggle = document.getElementById('galleryToggle');
+  let galleryStoppedByUser = reducedMotion.matches;
+
+  function updateGalleryToggle() {
+    galleryToggle.textContent = galleryStoppedByUser ? 'הפעלת החלפת התמונות' : 'עצירת החלפת התמונות';
+  }
+
+  galleryToggle.addEventListener('click', () => {
+    galleryStoppedByUser = !galleryStoppedByUser;
+    updateGalleryToggle();
+  });
+  updateGalleryToggle();
+
+  let galleryHovered = false;
+  galleryGrid.addEventListener('mouseenter', () => { galleryHovered = true; });
+  galleryGrid.addEventListener('mouseleave', () => { galleryHovered = false; });
+
+  function galleryRotationPaused() {
+    return document.hidden
+      || galleryStoppedByUser
+      || galleryHovered
+      || galleryGrid.contains(document.activeElement)
+      || lightbox.classList.contains('is-open');
+  }
 
   // Gentle automatic rotation: swap one tile at a time to an unused pool image
   setInterval(() => {
-    if (document.hidden) return;
+    if (galleryRotationPaused()) return;
 
     const tileIndex = Math.floor(Math.random() * galleryTiles.length);
     const usedIndexes = new Set(tilePoolIndex);
@@ -411,43 +517,66 @@ function isValidIsraeliPhone(raw) {
   return /^0(5\d{8}|[23489]\d{7}|7\d{8})$/.test(digits);
 }
 
+const formSuccessText = formSuccess.textContent;
+const formErrorGeneralText = formErrorGeneral.textContent;
+let formSubmitting = false;
+
+// Show a message and (re)insert its text so screen readers announce it via role="alert"/"status"
+function showFormMessage(el, text) {
+  el.textContent = '';
+  el.classList.add('visible');
+  setTimeout(() => { el.textContent = text; }, 50);
+}
+
+function setFieldInvalid(input, invalid) {
+  input.classList.toggle('is-invalid', invalid);
+  if (invalid) {
+    input.setAttribute('aria-invalid', 'true');
+  } else {
+    input.removeAttribute('aria-invalid');
+  }
+}
+
 contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
+  if (formSubmitting) return;
 
   formSuccess.classList.remove('visible');
   formErrorGeneral.classList.remove('visible');
   formValidationError.classList.remove('visible');
-  nameInput.classList.remove('is-invalid');
-  phoneInput.classList.remove('is-invalid');
+  setFieldInvalid(nameInput, false);
+  setFieldInvalid(phoneInput, false);
 
   const nameFilled = nameInput.value.trim().length > 0;
   const phoneFilled = phoneInput.value.trim().length > 0;
   const phoneValid = phoneFilled && isValidIsraeliPhone(phoneInput.value.trim());
 
   if (!nameFilled || !phoneFilled) {
-    if (!nameFilled) nameInput.classList.add('is-invalid');
-    if (!phoneFilled) phoneInput.classList.add('is-invalid');
-    formValidationError.textContent = 'שם ונייד הם שדות חובה';
-    formValidationError.classList.add('visible');
+    if (!nameFilled) setFieldInvalid(nameInput, true);
+    if (!phoneFilled) setFieldInvalid(phoneInput, true);
+    const missing = !nameFilled && !phoneFilled ? 'שם מלא וטלפון הם שדות חובה'
+      : !nameFilled ? 'יש למלא שם מלא' : 'יש למלא מספר טלפון';
+    showFormMessage(formValidationError, missing);
     (!nameFilled ? nameInput : phoneInput).focus();
     return;
   }
 
   if (!phoneValid) {
-    phoneInput.classList.add('is-invalid');
-    formValidationError.textContent = 'יש להזין מספר נייד תקין';
-    formValidationError.classList.add('visible');
+    setFieldInvalid(phoneInput, true);
+    showFormMessage(formValidationError, 'מספר הטלפון אינו תקין. יש להזין מספר נייד או קווי, לדוגמה 0541234567');
     phoneInput.focus();
     return;
   }
 
   if (!FORM_ENDPOINT) {
     console.warn('Contact form: set FORM_ENDPOINT in script.js to enable real submissions.');
-    formErrorGeneral.classList.add('visible');
+    showFormMessage(formErrorGeneral, formErrorGeneralText);
     return;
   }
 
-  submitBtn.disabled = true;
+  // aria-disabled (not disabled) keeps keyboard focus on the button while sending
+  formSubmitting = true;
+  submitBtn.setAttribute('aria-disabled', 'true');
   submitBtn.textContent = 'שולח...';
 
   try {
@@ -458,15 +587,16 @@ contactForm.addEventListener('submit', async (e) => {
     });
 
     if (response.ok) {
-      formSuccess.classList.add('visible');
+      showFormMessage(formSuccess, formSuccessText);
       contactForm.reset();
     } else {
-      formErrorGeneral.classList.add('visible');
+      showFormMessage(formErrorGeneral, formErrorGeneralText);
     }
   } catch (err) {
-    formErrorGeneral.classList.add('visible');
+    showFormMessage(formErrorGeneral, formErrorGeneralText);
   } finally {
-    submitBtn.disabled = false;
+    formSubmitting = false;
+    submitBtn.removeAttribute('aria-disabled');
     submitBtn.textContent = 'שליחת פנייה';
   }
 });
